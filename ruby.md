@@ -16,12 +16,11 @@
     1. [Ternary operator](#ternary-operator)
 1. [Syntax](#syntax)
 1. [Naming](#naming)
-1. [Percent Literals](#percent-literals)
 1. [Classes](#classes)
 1. [Exceptions](#exceptions)
 1. [Collections](#collections)
 1. [Strings](#strings)
-1. [Be Consistent](#be-consistent)
+1. [Percent Literals](#percent-literals)
 
 ## Whitespace
 
@@ -376,62 +375,6 @@ bluths.select(&:blue_self?)
   methods should only exist if a non-bang method exists
   ([More on this][ruby-naming-bang]).
 
-## Percent Literals
-
-* Use curly brackets for `%` literals
-
-```ruby
-# bad
-%w[active inactive]
-%(A long string)
-
-# good
-%w{active inactive}
-%{A long string}
-```
-
-* Use `%w` freely.
-
-```ruby
-STATUES = %w{active inactive invited}
-```
-
-* Use %() for single-line strings which require both interpolation and embedded
-  double-quotes. For multi-line strings, prefer heredocs.
-
-```ruby
-# bad (no interpolation needed)
-%(<div class="text">Some text</div>)
-# should be "<div class=\"text\">Some text</div>"
-
-# bad (no double-quotes)
-%(This is #{quality} style)
-# should be "This is #{quality} style"
-
-# bad (multiple lines)
-%(<div>
-    <span class="big">#{exclamation}</span>
-</div>)
-# should be a heredoc.
-
-# good (requires interpolation, has quotes, single line)
-%(<tr><td class="name">#{name}</td>)
-```
-
-* Use `%r` only for regular expressions matching more than one '/' character.
-
-```ruby
-# bad
-%r(\s+)
-
-# still bad
-%r(^/(.*)$)
-# should be /^\/(.*)$/
-
-# good
-%r(^/blog/2011/(.*)$)
-```
-
 ## Classes
 
 * Avoid the usage of class (`@@`) variables due to their "nasty" behavior
@@ -615,4 +558,60 @@ html = <<-HTML
         <h1>#{user.name}</h1>
     </div>
 HTML
+```
+
+## Percent Literals
+
+* Use curly brackets for `%` literals
+
+```ruby
+# bad
+%w[active inactive]
+%(A long string)
+
+# good
+%w{active inactive}
+%{A long string}
+```
+
+* Use `%w` freely.
+
+```ruby
+STATUES = %w{active inactive invited}
+```
+
+* Use %() for single-line strings which require both interpolation and embedded
+  double-quotes. For multi-line strings, prefer heredocs.
+
+```ruby
+# bad (no interpolation needed)
+%(<div class="text">Some text</div>)
+# should be "<div class=\"text\">Some text</div>"
+
+# bad (no double-quotes)
+%(This is #{quality} style)
+# should be "This is #{quality} style"
+
+# bad (multiple lines)
+%(<div>
+    <span class="big">#{exclamation}</span>
+</div>)
+# should be a heredoc.
+
+# good (requires interpolation, has quotes, single line)
+%(<tr><td class="name">#{name}</td>)
+```
+
+* Use `%r` only for regular expressions matching more than one '/' character.
+
+```ruby
+# bad
+%r(\s+)
+
+# still bad
+%r(^/(.*)$)
+# should be /^\/(.*)$/
+
+# good
+%r(^/blog/2011/(.*)$)
 ```
