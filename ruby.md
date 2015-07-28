@@ -656,7 +656,7 @@ STATUES = %w{active inactive invited}
 %r(^/blog/2011/(.*)$)
 ```
 
-Thanks to these kind teams!
+Thanks to these kind teams for sharing their code styles!
 
-[dockyard](https://github.com/dockyard/styleguides/blob/master/ruby.md)
-[github-ruby](https://github.com/styleguide/ruby)
+* [dockyard](https://github.com/dockyard/styleguides/blob/master/ruby.md)
+* [github-ruby](https://github.com/styleguide/ruby)
