@@ -126,6 +126,46 @@ def bake(pie, temp: 400, at: Time.now)
     # Bake stuff
 end
 ```
+### Method calls
+
+* Wrap method arguments in `(...)`
+
+```ruby
+# bad
+User.new params
+
+# good
+User.new(params)
+```
+
+* Do not add `()` if the method does not accept any arguments
+
+```ruby
+# bad
+data.shuffle().first()
+
+# good
+data.shuffle.first
+```
+
+* When passing a big hash to a method, always use `{}` and have the hash keys on new
+  lines with one indentation
+
+```ruby
+# bad
+User.new(
+    first_name: 'John',
+    last_name: 'Snow',
+    age: 23
+)
+
+# good
+User.new({
+    first_name: 'John',
+    last_name: 'Snow',
+    age: 23
+})
+```
 
 ## Conditional Expressions
 
