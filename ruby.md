@@ -606,3 +606,13 @@ paragraphs.each do |paragraph|
     html << "<p>#{paragraph}</p>"
 end
 ```
+
+* Use heredoc style strings for multiline strings that need interpolation
+
+```ruby
+html = <<-HTML
+    <div class="row">
+        <h1>#{user.name}</h1>
+    </div>
+HTML
+```
