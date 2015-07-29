@@ -14,6 +14,7 @@
 
 ```scss
 .post-title {
+∙∙∙∙property: value;
 }
 ```
 
