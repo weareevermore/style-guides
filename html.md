@@ -13,7 +13,7 @@
 
 ## General Formating
 
-* Paragraphs of text should always be placed in a <p> tag.
+* Paragraphs of text should always be placed in a `<p>` tag.
   Never use multiple `<br>` tags.
 * Items in list form should always be in `<ul>`, `<ol>`, or `<dl>`.
   Never use a set of `<div>` or `<p>`.
