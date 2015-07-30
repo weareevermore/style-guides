@@ -295,7 +295,7 @@ end
 
 * Feel free to use service objects to move logic from controllers
 
-* Put your service objects in `app/forms` and append `Service` to the class name.
+* Put your service objects in `app/services` and append `Service` to the class name.
 
 ## Migrations
 
