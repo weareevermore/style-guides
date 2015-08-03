@@ -625,35 +625,35 @@ STATUES = %w{active inactive invited}
 
 ```ruby
 # bad (no interpolation needed)
-%(<div class="text">Some text</div>)
+%{<div class="text">Some text</div>}
 # should be "<div class=\"text\">Some text</div>"
 
 # bad (no double-quotes)
-%(This is #{quality} style)
+%{This is #{quality} style}
 # should be "This is #{quality} style"
 
 # bad (multiple lines)
-%(<div>
+%{<div
     <span class="big">#{exclamation}</span>
-</div>)
+</div>}
 # should be a heredoc.
 
 # good (requires interpolation, has quotes, single line)
-%(<tr><td class="name">#{name}</td>)
+%{<tr><td class="name">#{name}</td>}
 ```
 
 * Use `%r` only for regular expressions matching more than one '/' character.
 
 ```ruby
 # bad
-%r(\s+)
+%r{\s+}
 
 # still bad
-%r(^/(.*)$)
+%r{^/(.*)$}
 # should be /^\/(.*)$/
 
 # good
-%r(^/blog/2011/(.*)$)
+%r{^/blog/2011/(.*)$}
 ```
 
 Thanks to these kind teams for sharing their code styles!
