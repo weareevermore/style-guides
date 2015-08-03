@@ -195,22 +195,18 @@ margin-top: 0px;
 margin-top: 0;
 ```
 
-* Try and have your SCSS rules under a parent element
+* Do not nest the SCSS rules under the parent element as it will limit the searching
+  (or the Go to symbol)
 
 ```scss
+// bad
 .post {
-    // post rules
 
-    &-title {
-        // title rules
-    }
-
-    &-sub-title {
-        // sub title rules
-    }
+    &-title {}
+    &-sub-title {}
 }
 
-// CSS result
+// good
 .post {}
 .post-title {}
 .post-sub-title {}
