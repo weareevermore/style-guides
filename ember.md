@@ -85,7 +85,7 @@ export default Model.extend({
 {{!-- bad --}}
 <img src={{ user.image }} alt="User image">
 
-{{!-- good }}
+{{!-- good --}}
 <img src="{{ user.image }}" alt="User image">
 ```
 
