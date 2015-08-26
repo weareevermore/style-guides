@@ -97,9 +97,13 @@ export default Model.extend({
 ## Module's Structure
 
 * Define the dependency injections first
+
 * Define you object's default values after the dependencies.
+
 * Define single line computed properties (`surname: alias('lastName')`) after the default values
+
 * Define multiline computed properties after the single line ones.
+
 * Define the actions hash last
 
 ```javascript
