@@ -5,18 +5,18 @@
 1. [Routing](#routing)
 1. [Controllers](#controllers)
 1. [Models](#models)
-    1. [ActiveModel](#activemodel)
-    1. [Queries](#queries)
-    1. [Decorators](#decorators)
-    1. [Form Objects](#form-objects)
-    1. [Service Objects](#service-objects)
+  1. [ActiveModel](#activemodel)
+  1. [Queries](#queries)
+  1. [Decorators](#decorators)
+  1. [Form Objects](#form-objects)
+  1. [Service Objects](#service-objects)
 1. [Migrations](#migrations)
 1. [Views](#views)
 1. [Testing](#testing)
 1. [Gems](#gems)
-    1. [General](#general)
-    1. [Development](#development)
-    1. [Testing](#testing)
+  1. [General](#general)
+  1. [Development](#development)
+  1. [Testing](#testing)
 
 ## Routing
 
@@ -33,7 +33,7 @@ resources :subscriptions
 ```ruby
 resources :photos, only: [:index, :show]
 
-resouces :photos, except: :destroy
+resources :photos, except: :destroy
 ```
 
 *  When you need to add more actions to a RESTful resource, use `member` and `collection` routes.
@@ -45,7 +45,7 @@ resources :subscriptions
 
 # good
 resources :subscriptions do
-    get 'unsubscribe', on: :member
+  get 'unsubscribe', on: :member
 end
 ```
 
@@ -58,7 +58,7 @@ resources :photos
 
 # good
 resources :photos do
-    get 'search', on: :collection
+  get 'search', on: :collection
 end
 ```
 
@@ -67,17 +67,17 @@ end
 
 ```ruby
 resources :subscriptions do
-    member do
-        get 'unsubscribe'
-        # more routes
-    end
+  member do
+    get 'unsubscribe'
+    # more routes
+  end
 end
 
 resources :photos do
-    collection do
-        get 'search'
-        # more routes
-    end
+  collection do
+    get 'search'
+    # more routes
+  end
 end
 ```
 
@@ -85,13 +85,13 @@ end
 
 ```ruby
 namespace :admin do
-    resources :products
+  resources :products
 end
 
 namespace :api do
-    namespace :v1 do
-        resources :users
-    end
+  namespace :v1 do
+    resources :users
+  end
 end
 ```
 
@@ -106,15 +106,15 @@ end
 
 ```ruby
 class PostsController < ApplicationController
-    before_action :authenticate!
+  before_action :authenticate!
 
-    def show
-    end
+  def show
+  end
 
-    private
+  private
 
-    def post
-    end
+  def post
+  end
 end
 ```
 
@@ -135,20 +135,20 @@ end
 
 ```ruby
 class User < ActiveRecord::Base
-    include SomeConcern
+  include SomeConcern
 
-    # Constants
-    STATUSES = %w{active inactive invited}
+  # Constants
+  STATUSES = %w{active inactive invited}
 
-    # Relations
-    belongs_to :account
-    has_many :photos, dependent: :destroy
+  # Relations
+  belongs_to :account
+  has_many :photos, dependent: :destroy
 
-    # Validations
-    validates :first_name, presence: true
+  # Validations
+  validates :first_name, presence: true
 
-    # Scopes
-    scope :active, -> { where(status: 'active') }
+  # Scopes
+  scope :active, -> { where(status: 'active') }
 end
 ```
 
@@ -184,12 +184,12 @@ User.find_by(first_name: 'Bruce', last_name: 'Lee')
 ```ruby
 # bad - loads all the records at once
 User.all.each do |user|
-    NewsMailer.weekly(user).deliver_now
+  NewsMailer.weekly(user).deliver_now
 end
 
 # good - records are retrieved in batches
 User.find_each do |user|
-    NewsMailer.weekly(user).deliver_now
+  NewsMailer.weekly(user).deliver_now
 end
 ```
 
@@ -207,11 +207,11 @@ User.where.not(id: id)
 
 ```ruby
 class Post < ActiveRecord::Base
-    belongs_to :author
+  belongs_to :author
 end
 
 class Author < ActiveRecord::Base
-    has_many :posts
+  has_many :posts
 end
 ```
 
@@ -237,12 +237,12 @@ the minumum number of queries.
 
 ```ruby
 User.find_by_sql <<-SQL
-    SELECT
-        user.id,
-        user.name
-    FROM
-        users
-        INNER JOIN....
+  SELECT
+    user.id,
+    user.name
+  FROM
+    users
+    INNER JOIN....
 SQL
 ```
 
@@ -258,17 +258,17 @@ SQL
 
 ```ruby
 class PostMetaDecorator
-    def initialize(model)
-        @model = model
-    end
+  def initialize(model)
+    @model = model
+  end
 
-    def title
-        @model.title
-    end
+  def title
+    @model.title
+  end
 
-    def description
-        @model.description.present? ? @model.description : @model.body.truncate(160)
-    end
+  def description
+    @model.description.present? ? @model.description : @model.body.truncate(160)
+  end
 end
 ```
 
@@ -282,12 +282,12 @@ end
 
 ```ruby
 class ContactForm
-    include ActiveModel::Concern
+  include ActiveModel::Concern
 
-    attr_accessor :name, :email, :message
+  attr_accessor :name, :email, :message
 
-    # Validations
-    validates :email, presence: true
+  # Validations
+  validates :email, presence: true
 end
 ```
 
@@ -307,17 +307,17 @@ end
 ```ruby
 # bad
 def price
-    self[:price] or 0
+  self[:price] or 0
 end
 
 # good
 class CreateProducts < ActiveRecord::Migration
-    def change
-        create_table :products do |t|
-            t.string :name
-            t.integer :price, default: 0
-        end
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.integer :price, default: 0
     end
+  end
 end
 ```
 
@@ -329,9 +329,9 @@ end
 
 ```ruby
 class AddNameToPeople < ActiveRecord::Migration
-    def change
-        add_column :people, :name, :string
-    end
+  def change
+    add_column :people, :name, :string
+  end
 end
 ```
 
@@ -341,11 +341,11 @@ end
 
 ```ruby
 def up
-    remove_column :products, :tax_percent
+  remove_column :products, :tax_percent
 end
 
 def down
-    add_column :products, :tax_percent, :decimal, null: false, :precision => 6, :scale => 4
+  add_column :products, :tax_percent, :decimal, null: false, :precision => 6, :scale => 4
 end
 ```
 
@@ -392,13 +392,13 @@ end
 
 ```ruby
 it 'shows error messages' do
-    visit '/contacts'
+  visit '/contacts'
 
-    fill_in ...
-    fill_in ...
-    click_button ...
+  fill_in ...
+  fill_in ...
+  click_button ...
 
-    expect(page).to have_content()
+  expect(page).to have_content()
 end
 ```
 

@@ -18,34 +18,40 @@ Future versions of Ember will be released as ES2015 modules, so we'll be able to
 ```javascript
 // bad
 export default DS.Model.extend({
-    firstName: DS.attr('string'),
-    lastName: DS.attr('string'),
+  firstName: DS.attr('string'),
+  lastName: DS.attr('string'),
 
-    fullName: Ember.computed('firstName', 'lastName', function () {
-        // code
-    }),
+  fullName: Ember.computed('firstName', 'lastName', function () {
+    // code
+  }),
 
-    fullNameBad: function() {
-        // Code
-    }.property('firstName', 'lastName')
+  fullNameBad: function() {
+    // Code
+  }.property('firstName', 'lastName')
 });
 
 // good
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { Model, attr } = DS;
-const { computed } = Ember;
+const {
+  Model,
+  attr
+} = DS;
+const {
+  computed,
+  computed: { alias }
+} = Ember;
 
 export default Model.extend({
-    firstName: attr('string'),
-    lastName:  attr('string'),
+  firstName: attr('string'),
+  lastName:  attr('string'),
 
-    surname:   alias('lastName')
+  surname:   alias('lastName')
 
-    fullName:  computed('firstName', 'lastName', function () {
-        // code
-    })
+  fullName:  computed('firstName', 'lastName', function () {
+    // code
+  })
 });
 ```
 
@@ -68,13 +74,13 @@ export default Model.extend({
 ```htmlbars
 {{!-- good --}}
 {{#component-with-block}}
-    {{!-- content --}}
+  {{!-- content --}}
 {{/component-with-block}}
 
 {{#if isVisible}}
-    {{!-- is visible --}}
+  {{!-- is visible --}}
 {{else}}
-    {{!-- is invisible --}}
+  {{!-- is invisible --}}
 {{/if}}
 ```
 
@@ -108,26 +114,26 @@ export default Model.extend({
 
 ```javascript
 export default Component.extend({
-    // Dependencies
-    session: service('session')
+  // Dependencies
+  session: service('session')
 
-    // Defaults
-    tagName: 'section',
+  // Defaults
+  tagName: 'section',
 
-    // Single line CP
-    surname: alias('user.lastName')
+  // Single line CP
+  surname: alias('user.lastName')
 
-    // Multiline CP
-    fullName: computed('user.firstName', 'user.lastName', function () {
-        return `${this.get('user.firstname')} ${this.get('user.lastName')}`;
-    }),
+  // Multiline CP
+  fullName: computed('user.firstName', 'user.lastName', function () {
+    return `${this.get('user.firstname')} ${this.get('user.lastName')}`;
+  }),
 
-    // Actions hash
-    actions: {
-        update() {
-            // Code
-        }
+  // Actions hash
+  actions: {
+    update() {
+      // Code
     }
+  }
 });
 ```
 
@@ -140,28 +146,28 @@ export default Component.extend({
 ```
 app
   application/
-      template.hbs
-      route.js
+    template.hbs
+    route.js
 
   blog/
-      index/
-          blog-listing/ - component only used on the index template
-              template.hbs
-          route.js
-          template.hbs
-      comment-details/ - used within blog templates
-          component.js
-          template.hbs
+    index/
+      blog-listing/ - component only used on the index template
+        template.hbs
       route.js
+      template.hbs
+    comment-details/ - used within blog templates
+      component.js
+      template.hbs
+    route.js
 
   components/
-      tag-listing/ - used throughout the app
-          template.hbs
+    tag-listing/ - used throughout the app
+      template.hbs
 
   post/
-      adapter.js
-      model.js
-      serializer.js
+    adapter.js
+    model.js
+    serializer.js
 ```
 
 ## Controllers
@@ -182,16 +188,16 @@ app
 ```htmlbars
 {{!-- bad --}}
 {{#each posts as |post|}}
-    <article>
-        <img src="{{post.image}}">
-        <h1>{{post.title}}</h2>
-        <p>{{post.summar}}</p>
-    </article>
+  <article>
+    <img src="{{post.image}}">
+    <h1>{{post.title}}</h2>
+    <p>{{post.summar}}</p>
+  </article>
 {{/each}}
 
 {{!-- good --}}
 {{#each posts as |post|}}
-    {{post-summary post=post}}
+  {{post-summary post=post}}
 {{/each}}
 ```
 
@@ -202,16 +208,16 @@ app
 ```javascript
 // bad
 export default Model.extend({
-    firstName: attr(),
-    age: attr(),
-    isAdmin: attr()
+  firstName: attr(),
+  age: attr(),
+  isAdmin: attr()
 });
 
 // good
 export default Model.extend({
-    firstName: attr('string'),
-    age:       attr('number'),
-    isAdmin:   attr('boolean'),
+  firstName: attr('string'),
+  age:       attr('number'),
+  isAdmin:   attr('boolean'),
 })
 ```
 

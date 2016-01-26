@@ -3,11 +3,11 @@
 ## Table of Contents
 
 1. [General Formating](#general-formating)
-    1. [Indentation](#indentation)
-    1. [Line Breaks](#line-breaks)
+  1. [Indentation](#indentation)
+  1. [Line Breaks](#line-breaks)
 1. [Lean Markup](#lean-code)
 1. [Forms](#forms)
-    1. [Boolean Attributes](#boolean-attributes)
+  1. [Boolean Attributes](#boolean-attributes)
 1. [Tables](#tables)
 1. [Comments](#comments)
 
@@ -21,14 +21,14 @@
 ```html
 <!-- bad -->
 <div class="friends">
-    <p class="friend">John Snow</p>
-    <p class="friend">Eddark Stark</p>
+  <p class="friend">John Snow</p>
+  <p class="friend">Eddark Stark</p>
 </div>
 
 <!-- good -->
 <ul class="friends reset-list">
-    <li class="friend">John Snow</li>
-    <li class="friend">Eddark Stark</li>
+  <li class="friend">John Snow</li>
+  <li class="friend">Eddark Stark</li>
 </ul>
 ```
 
@@ -54,14 +54,14 @@
 
 ### Indentation
 
-* Use soft-tabs set to 4 spaces.
+* Use soft-tabs set to 2 spaces.
 
 ```html
 <div class="post">
-    <h1 class="post-title">Awesome post</h1>
-    <div class="post-body">
-        Lorem ipsum dolor sit amet....
-    </div>
+  <h1 class="post-title">Awesome post</h1>
+  <div class="post-body">
+    Lorem ipsum dolor sit amet....
+  </div>
 </div>
 ```
 
@@ -75,8 +75,8 @@
 
 <!-- good -->
 <p>
-    For more info click
-    <a href="#">here</a>
+  For more info click
+  <a href="#">here</a>
 </p>
 ```
 
@@ -84,10 +84,10 @@
 
 ```html
 <div class="about">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    Deleniti delectus eum molestias fugit a recusandae eius iusto
-    quisquam aut pariatur, neque, excepturi ipsum distinctio libero,
-    maxime odit illo similique qui.
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  Deleniti delectus eum molestias fugit a recusandae eius iusto
+  quisquam aut pariatur, neque, excepturi ipsum distinctio libero,
+  maxime odit illo similique qui.
 </div>
 ```
 
@@ -100,7 +100,7 @@
 ```html
 <!-- not so great -->
 <span class="avatar">
-    <img src="...">
+  <img src="...">
 </span>
 
 <!-- better -->
@@ -110,18 +110,18 @@
 ```html
 <!-- bad -->
 <nav class="nav">
-    <ul>
-        <li><a class="nav-link" href="/about">About</a></li>
-        <li><a class="nav-link" href="/team">Team</a></li>
-        <li><a class="nav-link" href="/contact">Contact</a></li>
-    </ul>
+  <ul>
+    <li><a class="nav-link" href="/about">About</a></li>
+    <li><a class="nav-link" href="/team">Team</a></li>
+    <li><a class="nav-link" href="/contact">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- good -->
 <nav class="nav">
-    <a class="nav-link" href="/about">About</a>
-    <a class="nav-link" href="/team">Team</a>
-    <a class="nav-link" href="/contact">Contact</a>
+  <a class="nav-link" href="/about">About</a>
+  <a class="nav-link" href="/team">Team</a>
+  <a class="nav-link" href="/contact">Contact</a>
 </nav>
 ```
 
@@ -130,14 +130,14 @@
 ```html
 <!-- bad -->
 <div class="photo">
-    <img src="..." alt="...">
-    <p class="photo-caption"></p>
+  <img src="..." alt="...">
+  <p class="photo-caption"></p>
 </div>
 
 <!-- good -->
 <figure class="photo">
-    <img src="..." alt="...">
-    <figcaption class="photo-caption"></figcaption>
+  <img src="..." alt="...">
+  <figcaption class="photo-caption"></figcaption>
 </figure>
 ```
 
@@ -171,7 +171,7 @@
 <input type="checkbox" value="1" checked>
 
 <select>
-    <option value="1" selected>1</option>
+  <option value="1" selected>1</option>
 </select>
 ```
 
@@ -183,24 +183,24 @@
 
 ```html
 <table summary="Most awesome data">
-    <thead>
-        <tr>
-            <th scope="col">Table header 1</th>
-            <th scope="col">Table header 2</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr>
-            <td>Table footer 1</td>
-            <td>Table footer 2</td>
-        </tr>
-    </tfoot>
-    <tbody>
-        <tr>
-            <td>Table data 1</td>
-            <td>Table data 2</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">Table header 1</th>
+      <th scope="col">Table header 2</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Table footer 1</td>
+      <td>Table footer 2</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Table data 1</td>
+      <td>Table data 2</td>
+    </tr>
+  </tbody>
 </table>
 ```
 

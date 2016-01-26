@@ -10,11 +10,11 @@
 
 ## Indentation
 
-* Use soft-tabs set to 4 spaces.
+* Use soft-tabs set to 2 spaces.
 
 ```scss
 .post-title {
-∙∙∙∙property: value;
+∙∙property: value;
 }
 ```
 
@@ -22,11 +22,11 @@
 
 ```scss
 .post-title {
-    // ....
+  // ....
 
-    .post-title-date {
-        // ....
-    }
+  .post-title-date {
+    // ....
+  }
 }
 ```
 
@@ -80,13 +80,13 @@
 ```scss
 // bad
 .title {
-    font-size:16px; font-weight:bold
+  font-size:16px; font-weight:bold
 }
 
 // good
 .title {
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 ```
 
@@ -94,8 +94,8 @@
   removing line breaks for readability and faster editing.
 
 ```scss
-.icon         { background-position: 0 0; }
-.icon-home    { background-position: 0 -20px; }
+.icon     { background-position: 0 0; }
+.icon-home  { background-position: 0 -20px; }
 .icon-account { background-position: 0 -40px; }
 ```
 
@@ -140,11 +140,11 @@
 
 ```html
 <div class="comment">
-    <div class="comment-body">
-        <!-- ..... -->
-        <span class="comment-author"></span>
-    </div>
-    <time class="comment-date"></time>
+  <div class="comment-body">
+    <!-- ..... -->
+    <span class="comment-author"></span>
+  </div>
+  <time class="comment-date"></time>
 </div>
 ```
 
@@ -154,34 +154,34 @@
 
 ```scss
 .selector {
-    // Positioning
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    right: 0;
+  // Positioning
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
 
-    // Display
-    display: inline-block;
-    overflow: hidden;
-    box-sizing: border-box;
-    width: 100px;
-    height: 100px;
-    padding: 10px;
-    border: 10px solid #333;
-    margin: 10px;
+  // Display
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid #333;
+  margin: 10px;
 
-    // Color
-    background: #000;
-    color: #fff
+  // Color
+  background: #000;
+  color: #fff
 
-    // Text
-    font-family: sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-    text-align: right;
+  // Text
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: right;
 
-    // Other
-    cursor: pointer;
+  // Other
+  cursor: pointer;
 }
 ```
 
@@ -202,8 +202,8 @@ margin-top: 0;
 // bad
 .post {
 
-    &-title {}
-    &-sub-title {}
+  &-title {}
+  &-sub-title {}
 }
 
 // good
@@ -217,10 +217,10 @@ margin-top: 0;
 
 ```scss
 .title {
-    @extend %large-title;
-    @include hover-effect();
+  @extend %large-title;
+  @include hover-effect();
 
-    // the rest of the rules
+  // the rest of the rules
 }
 ```
 

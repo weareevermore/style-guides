@@ -3,17 +3,17 @@
 ## Table of Contents
 
 1. [Whitespace](#whitespace)
-    1. [Indentation](#indentation)
-    1. [Inline](#inline)
-    1. [Newlines](#newlines)
+  1. [Indentation](#indentation)
+  1. [Inline](#inline)
+  1. [Newlines](#newlines)
 1. [Commenting](#commenting)
-    1. [Commented-out code](#commented-out-code)
+  1. [Commented-out code](#commented-out-code)
 1. [Methods](#methods)
-    1. [Method definitions](#method-definitions)
-    1. [Method calls](#method-calls)
+  1. [Method definitions](#method-definitions)
+  1. [Method calls](#method-calls)
 1.  [Conditional Expressions](#conditional-expressions)
-    1. [Conditional keywords](#conditional-keywords)
-    1. [Ternary operator](#ternary-operator)
+  1. [Conditional keywords](#conditional-keywords)
+  1. [Ternary operator](#ternary-operator)
 1. [Syntax](#syntax)
 1. [Naming](#naming)
 1. [Classes](#classes)
@@ -26,13 +26,13 @@
 
 ### Indentation
 
-* Use soft-tabs set to 4 spaces.
+* Use soft-tabs set to 2 spaces.
 
 ```ruby
 class Awesome
-∙∙∙∙def method_name
-∙∙∙∙∙∙∙∙# Method logic
-    end
+∙∙def method_name
+∙∙∙∙# Method logic
+  end
 end
 ```
 
@@ -62,7 +62,7 @@ some(arg).other
 
 ```ruby
 if wall.needs_paint?
-    paint_the_wall
+  paint_the_wall
 end
 
 wall.paint(:favorite_color)
@@ -70,11 +70,11 @@ wall.paint(:favorite_color)
 
 ```ruby
 def method_name
-    # ...
+  # ...
 end
 
 def second_method
-    # ...
+  # ...
 end
 ```
 
@@ -104,11 +104,11 @@ Please don't leave commented-out code. Let git handle this.
 
 ```ruby
 def some_method
-    # body omitted
+  # body omitted
 end
 
 def some_method_with_arguments(arg1, arg2)
-    # body omitted
+  # body omitted
 end
 ```
 
@@ -118,12 +118,12 @@ end
 ```ruby
 # bad
 def bake(pie, temp = 400, at = Time.now)
-    # Bake stuff
+  # Bake stuff
 end
 
 # good
 def bake(pie, temp: 400, at: Time.now)
-    # Bake stuff
+  # Bake stuff
 end
 ```
 ### Method calls
@@ -154,16 +154,16 @@ data.shuffle.first
 ```ruby
 # bad
 User.new(
-    first_name: 'John',
-    last_name: 'Snow',
-    age: 23
+  first_name: 'John',
+  last_name: 'Snow',
+  age: 23
 )
 
 # good
 User.new({
-    first_name: 'John',
-    last_name: 'Snow',
-    age: 23
+  first_name: 'John',
+  last_name: 'Snow',
+  age: 23
 })
 ```
 
@@ -176,12 +176,12 @@ User.new({
 ```ruby
 # bad
 if some_condition then
-    # ...
+  # ...
 end
 
 # good
 if some_condition
-    # ...
+  # ...
 end
 ```
 
@@ -198,16 +198,16 @@ end
 ```ruby
 # bad
 unless success?
-    puts 'failure'
+  puts 'failure'
 else
-    puts 'success'
+  puts 'success'
 end
 
 # good
 if success?
-    puts 'success'
+  puts 'success'
 else
-    puts 'failure'
+  puts 'failure'
 end
 ```
 
@@ -216,12 +216,12 @@ end
 ```ruby
 # bad
 unless foo? && bar?
-    # ...
+  # ...
 end
 
 # okay
 if !(foo? && bar?)
-    # ...
+  # ...
 end
 ```
 
@@ -232,17 +232,17 @@ end
 ```ruby
 # bad
 if (x > 10)
-    # ...
+  # ...
 end
 
 # good
 if x > 10
-    # ...
+  # ...
 end
 
 # ok
 if (x = self.next_value)
-    # ...
+  # ...
 end
 ```
 
@@ -251,7 +251,7 @@ end
 ```ruby
 # bad
 if some_condition
-    do_something
+  do_something
 end
 
 # good
@@ -282,9 +282,9 @@ some_condition ? (nested_condition ? nested_something : nested_something_else) :
 
 # good
 if some_condition
-    nested_condition ? nested_something : nested_something_else
+  nested_condition ? nested_something : nested_something_else
 else
-    something_else
+  something_else
 end
 ```
 
@@ -295,13 +295,13 @@ end
 ```ruby
 case
 when song.name == "Misty"
-    puts "Not again!"
+  puts "Not again!"
 when song.duration > 120
-    puts "Too long!"
+  puts "Too long!"
 when Time.now.hour > 21
-    puts "It's too late"
+  puts "It's too late"
 else
-    song.play
+  song.play
 end
 ```
 
@@ -318,7 +318,7 @@ arr = [1, 2, 3]
 
 # bad
 for elem in arr do
-    puts elem
+  puts elem
 end
 
 # good
@@ -336,7 +336,7 @@ names = ["Bozhidar", "Steve", "Sarah"]
 
 # bad
 names.each do |name|
-    puts name
+  puts name
 end
 
 # good
@@ -344,7 +344,7 @@ names.each { |name| puts name }
 
 # bad
 names.select do |name|
-    name.start_with?("S")
+  name.start_with?("S")
 end.map { |name| name.upcase }
 
 # good
@@ -357,12 +357,12 @@ names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
 ```ruby
 # bad
 def some_method(some_arr)
-    return some_arr.size
+  return some_arr.size
 end
 
 # good
 def some_method(some_arr)
-    some_arr.size
+  some_arr.size
 end
 ```
 
@@ -422,15 +422,15 @@ in inheritance.
 
 ```ruby
 class Parent
-    @@class_var = 'parent'
+  @@class_var = 'parent'
 
-    def self.print_class_var
-        puts @@class_var
-    end
+  def self.print_class_var
+    puts @@class_var
+  end
 end
 
 class Child < Parent
-    @@class_var = 'child'
+  @@class_var = 'child'
 end
 
 Parent.print_class_var # => will print "child"
@@ -445,15 +445,15 @@ over class variables.
 
 ```ruby
 class SomeClass
-    # bad
-    def SomeClass.some_method
-        # ...
-    end
+  # bad
+  def SomeClass.some_method
+    # ...
+  end
 
-    # good
-    def self.some_other_method
-        # ...
-    end
+  # good
+  def self.some_other_method
+    # ...
+  end
 end
 ```
 
@@ -462,21 +462,21 @@ end
 
 ```ruby
 class SomeClass
-    def public_method
-        # ...
-    end
+  def public_method
+    # ...
+  end
 
-    protected
+  protected
 
-    def protected_method
-        # ...
-    end
+  def protected_method
+    # ...
+  end
 
-    private
+  private
 
-    def private_method
-        # ...
-    end
+  def private_method
+    # ...
+  end
 end
 ```
 
@@ -487,16 +487,16 @@ end
 ```ruby
 # bad
 begin
-    n / d
+  n / d
 rescue ZeroDivisionError
-    puts "Cannot divide by 0!"
+  puts "Cannot divide by 0!"
 end
 
 # good
 if d.zero?
-    puts "Cannot divide by 0!"
+  puts "Cannot divide by 0!"
 else
-    n / d
+  n / d
 end
 ```
 
@@ -506,23 +506,23 @@ end
 ```ruby
 # bad
 begin
-    # an exception occurs here
+  # an exception occurs here
 rescue Exception
-    # exception handling
+  # exception handling
 end
 
 # bad
 begin
-    # an exception occurs here
+  # an exception occurs here
 rescue
-    # exception handling
+  # exception handling
 end
 
 # good
 begin
-    # an exception occurs here
+  # an exception occurs here
 rescue ActiveRecord::RecordNotFound
-    # exception handling
+  # exception handling
 end
 ```
 
@@ -553,12 +553,12 @@ hash = { one: 1, two: 2, three: 3 }
 
 ```ruby
 hash = {
-    protocol: 'https',
-    only_path: false,
-    controller: :users,
-    action: :set_password,
-    redirect: @redirect_url,
-    secret: @secret
+  protocol: 'https',
+  only_path: false,
+  controller: :users,
+  action: :set_password,
+  redirect: @redirect_url,
+  secret: @secret
 }
 ```
 
@@ -586,7 +586,7 @@ html = ''
 html << '<h1>Page title</h1>'
 
 paragraphs.each do |paragraph|
-    html << "<p>#{paragraph}</p>"
+  html << "<p>#{paragraph}</p>"
 end
 ```
 
@@ -594,9 +594,9 @@ end
 
 ```ruby
 html = <<-HTML
-    <div class="row">
-        <h1>#{user.name}</h1>
-    </div>
+  <div class="row">
+    <h1>#{user.name}</h1>
+  </div>
 HTML
 ```
 
@@ -634,7 +634,7 @@ STATUES = %w{active inactive invited}
 
 # bad (multiple lines)
 %{<div
-    <span class="big">#{exclamation}</span>
+  <span class="big">#{exclamation}</span>
 </div>}
 # should be a heredoc.
 
