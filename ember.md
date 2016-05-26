@@ -11,7 +11,7 @@
 
 ## General
 
-* Create local version of Ember.* and DS.*
+* For Ember Data, we should import `ember-data` modules. For Ember, use destructuring to create local versions
 
 Future versions of Ember will be released as ES2015 modules, so we'll be able to import `Ember.computed` directly as computed. This includes `computed.alias` or `computed.bool`, should be set to `alias` and `bool`, respectively. Do not use extend prototype syntax
 
@@ -32,12 +32,10 @@ export default DS.Model.extend({
 
 // good
 import Ember from 'ember';
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 
-const {
-  Model,
-  attr
-} = DS;
 const {
   computed,
   computed: { alias }
@@ -47,7 +45,8 @@ export default Model.extend({
   firstName: attr('string'),
   lastName:  attr('string'),
 
-  surname:   alias('lastName')
+  mother:    belongsTo('person'),
+  pets:      hasMany('animal'),
 
   fullName:  computed('firstName', 'lastName', function () {
     // code
@@ -95,10 +94,20 @@ export default Model.extend({
 <img src="{{ user.image }}" alt="User image">
 ```
 
-* Avoid overwriting init Unless you want to change an object's `init` function,
-  perform actions by hooking into the object's `init` hook via `on`.
-  This prevents you from forgetting to call `_super`.
-  [Here is why you shouldn't override init](http://reefpoints.dockyard.com/2014/04/28/dont-override-init.html).
+## Override init
+
+Rather than using the object's `init` hook via `on`, override `init` and call `_super` with `...arguments`. This allows you to control execution order.
+
+```javascript
+export default Component.extend({
+  init() {
+    this._super(...arguments);
+
+    this.doA();
+    this.doB();
+  }
+});
+```
 
 ## Module's Structure
 
@@ -110,7 +119,9 @@ export default Model.extend({
 
 * Define multiline computed properties after the single line ones.
 
-* Define the actions hash last
+* Define the actions hash
+
+* Define private methods last and use `_` infront of the names
 
 ```javascript
 export default Component.extend({
@@ -125,7 +136,7 @@ export default Component.extend({
 
   // Multiline CP
   fullName: computed('user.firstName', 'user.lastName', function () {
-    return `${this.get('user.firstname')} ${this.get('user.lastName')}`;
+    return this._concat(this.get('user.firstname'), this.get('user.lastName'));
   }),
 
   // Actions hash
@@ -133,6 +144,11 @@ export default Component.extend({
     update() {
       // Code
     }
+  },
+
+  // Private methods
+  _concat(...segments) {
+    return Ember.A(segements).compact().join(' ');
   }
 });
 ```
@@ -178,10 +194,17 @@ app
 * Do not use `ObjectController` and `ArrayControllers` as they are deprecated and are
   removed from Ember 2.0
 
+* Alias your model whenever you can as it is more maintainable, and will fall in line with future routable components.
+
+```javascript
+export default Controller.extend({
+  user: alias('model')
+});
+```
+
 ## Templates
 
-* Do not use partials. Always use components as they provide a consistent scope and improve
-  reusability.
+* Do not use partials. Always use components as they provide a consistent scope and improve reusability.
 
 * The content in a `{{#each}}` block should be a component if the content is more than one line. This will allow you to test the contents in isolation via unit tests, as your loop will likely contain more complex logic in this case.
 
@@ -190,16 +213,37 @@ app
 {{#each posts as |post|}}
   <article>
     <img src="{{post.image}}">
-    <h1>{{post.title}}</h2>
-    <p>{{post.summar}}</p>
+    <h1>{{ post.title }}</h2>
+    <p>{{ post.summar }}</p>
   </article>
 {{/each}}
 
 {{!-- good --}}
 {{#each posts as |post|}}
-  {{post-summary post=post}}
+  {{ post-summary post=post }}
 {{/each}}
 ```
+
+* Don't yield `this`. Yield only what is needed and use the hash helper where appropriate.
+
+```htmlbars
+{{!-- bad --}}
+{{ yield this }}
+
+{{!-- good --}}
+{{ yield (hash attribute=name action=(action "save")) }}
+```
+
+* Always use the action keyword to pass actions. Although it's not strictly needed to use the action keyword to pass on actions that have already been passed with the action keyword once, it's recommended to always use the action keyword when passing an action to another component. This will prevent some potential bugs that can happen and also make it more clear that you are passing an action.
+
+```htmlbars
+{{!-- bad --}}
+{{ edit-post post=post ondelete=handlePostDelete }}
+
+{{!-- good --}}
+{{ edit-post post=post ondelete=(action handlePostDelete) }}
+```
+
 
 ## Models
 
@@ -224,4 +268,97 @@ export default Model.extend({
 * Do not flood the models with presentational logic. If a computed property is used
   in a particular place, consider using a component.
 
-* Group model's attributes, relations, then computed properties.
+* Group model like:
+  - Attributes
+  - Relations
+  - Computed properties
+
+```javascript
+// bad
+import Ember from 'ember';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { hasMany } from 'ember-data/relationships';
+
+const { computed } = Ember;
+
+export default Model.extend({
+  children: hasMany('child'),
+  firstName: attr('string'),
+  lastName: attr('string'),
+
+  fullName: computed('firstName', 'lastName', function() {
+    // Code
+  })
+});
+
+// good
+import Ember from 'ember';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
+import { hasMany } from 'ember-data/relationships';
+
+const { computed } = Ember;
+
+export default Model.extend({
+  // Attributes
+  firstName: attr('string'),
+  lastName:  attr('string'),
+
+  // Associations
+  children:  hasMany('child'),
+
+  // Computed Properties
+  fullName: computed('firstName', 'lastName', function() {
+    // Code
+  })
+});
+```
+
+## Testing
+
+* Don't break the describe blocks into multiple lines
+
+```javascript
+// bad
+import { expect } from 'chai';
+import {
+  describeComponent,
+  it
+} from 'ember-mocha';
+import hbs from 'htmlbars-inline-precompile';
+
+describeComponent(
+  'dummy-select',
+  'Integration: DummySelectComponent',
+  {
+    integration: true
+  },
+  function() {
+    // The tests
+  }
+);
+
+// good
+import { expect } from 'chai';
+import { describeComponent, it } from 'ember-mocha';
+import hbs from 'htmlbars-inline-precompile';
+
+describeComponent('dummy-select', 'Integration: dummy-select', { integration: true }, function () {
+  // The tests
+});
+```
+
+* Name your tests using the following pattern - <Test type>: <module-name>, while keeping the component names as the are and capitalizing the model names.
+
+```javascript
+// bad
+describeComponent('dummy-select', 'Integration: DummySelectComponent');
+describe('Home page');
+describeModel('person', 'Unit | Model | dummy two');
+
+// good
+describeComponent('dummy-select', 'Integration: dummy-select');
+describe('Acceptance: Home page');
+describeModel('person', 'Model: Person');
+```
