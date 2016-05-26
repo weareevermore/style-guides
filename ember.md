@@ -212,7 +212,7 @@ export default Controller.extend({
 {{!-- bad --}}
 {{#each posts as |post|}}
   <article>
-    <img src="{{post.image}}">
+    <img src="{{ post.image }}">
     <h1>{{ post.title }}</h2>
     <p>{{ post.summar }}</p>
   </article>
@@ -349,7 +349,7 @@ describeComponent('dummy-select', 'Integration: dummy-select', { integration: tr
 });
 ```
 
-* Name your tests using the following pattern - <Test type>: <module-name>, while keeping the component names as the are and capitalizing the model names.
+* Name your tests using the following pattern - `Test type`: `module-name`, while keeping the component names as the are and capitalizing the model names.
 
 ```javascript
 // bad
