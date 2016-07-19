@@ -94,8 +94,8 @@
   removing line breaks for readability and faster editing.
 
 ```scss
-.icon     { background-position: 0 0; }
-.icon-home  { background-position: 0 -20px; }
+.icon         { background-position: 0 0; }
+.icon-home    { background-position: 0 -20px; }
 .icon-account { background-position: 0 -40px; }
 ```
 
@@ -224,19 +224,30 @@ margin-top: 0;
 }
 ```
 
-## Tips
+## Composable CSS
 
-Try and write composable CSS to improve reusability and readability in your markup.
-For example, here is a usage of composable css rules
+* Try and write composable CSS to improve reusability and readability in your markup.
 
 ```html
-<form class="search search-full pull-right">
+<!-- Bad -->
+<form class="search-full-pulled-right">
+</form>
+
+<!-- Good -->
+<form class="search-form -full -right">
 </form>
 ```
 
-instead of
+* Variant class names must be prefixed by a dash `-`.
 
-```html
-<form class="search-full-pulled-right">
-</form>
+```scss
+.search-form {
+  &.-fixed { }
+  &.-compact { }
+}
+
+.title {
+  &.-small { }
+  &.-big { }
+}
 ```
