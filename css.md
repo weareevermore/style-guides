@@ -6,7 +6,7 @@
 1. [Spacing](#spacing)
 1. [Selectors](#selectors)
 1. [Formating](#formating)
-1. [Tips](#tips)
+1. [Composable CSS](#composable-css)
 
 ## Indentation
 
