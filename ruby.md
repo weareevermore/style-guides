@@ -11,7 +11,7 @@
 1. [Methods](#methods)
   1. [Method definitions](#method-definitions)
   1. [Method calls](#method-calls)
-1.  [Conditional Expressions](#conditional-expressions)
+1. [Conditional Expressions](#conditional-expressions)
   1. [Conditional keywords](#conditional-keywords)
   1. [Ternary operator](#ternary-operator)
 1. [Syntax](#syntax)
