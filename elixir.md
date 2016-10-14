@@ -71,6 +71,21 @@ def a_longer_function do
 end
 ```
 
+* One line functions should not be separated by new lines
+```elixir
+# bad
+def one_or_two(1), do: "one"
+
+def one_or_two(2), do: "two"
+
+def one_or_two(_), do: "other"
+
+# good
+def one_or_two(1), do: "one"
+def one_or_two(2), do: "two"
+def one_or_two(_), do: "other"
+```
+
 * Do not add empty lines after `defmodule` and `def` definitions and do not leave
   empty lines before the closing `end`.
 
