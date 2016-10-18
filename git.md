@@ -56,7 +56,7 @@ to squash them into cohesive commits with good messages:
 
 Share your branch.
 
-    git push origin <branch-name>
+    git push --set-upstream origin <branch-name>
 
 Submit a [GitLab merge request]/[GitHub pull request].
 
