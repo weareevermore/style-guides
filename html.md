@@ -125,6 +125,24 @@
 </nav>
 ```
 
+* If possible, prefer using singular and plural nouns, instead of using suffixes
+
+```html
+<!-- bad -->
+<ul class="project-list">
+  <li class="project-item"></li>
+  <li class="project-item"></li>
+  <li class="project-item"></li>
+</ul>
+
+<!-- good -->
+<ul class="projects">
+  <li class="project"></li>
+  <li class="project"></li>
+  <li class="project"></li>
+</ul>
+```
+
 * Always use semantically correct elements
 
 ```html
