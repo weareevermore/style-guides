@@ -26,21 +26,11 @@ Style/AlignParameters:
 Style/Documentation:
   Enabled: false
 
-Style/TrailingWhitespace:
-  Enabled: false
-
-Style/GuardClause:
-  Enabled: false
-
 Style/BracesAroundHashParameters:
   Enabled: false
 
 Style/BlockDelimiters:
   Enabled: false
-
-Style/EmptyLinesAroundClassBody:
-  Enabled: false
-  EnforcedStyle: empty_lines
 
 Metrics/LineLength:
   Max: 100
