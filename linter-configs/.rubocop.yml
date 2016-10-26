@@ -42,7 +42,7 @@ Style/EmptyLinesAroundClassBody:
   Enabled: false
   EnforcedStyle: empty_lines
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
 Metrics/LineLength:
