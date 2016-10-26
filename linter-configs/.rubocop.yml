@@ -42,8 +42,5 @@ Style/EmptyLinesAroundClassBody:
   Enabled: false
   EnforcedStyle: empty_lines
 
-Style/SingleSpaceBeforeFirstArg:
-  Enabled: false
-
 Metrics/LineLength:
   Max: 100
