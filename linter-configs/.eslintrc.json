@@ -1,4 +1,13 @@
 {
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true
+  },  
   "rules": {
     "space-before-function-paren": [2, "always"],
     "no-empty": [2, { "allowEmptyCatch": true }],
