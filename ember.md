@@ -8,6 +8,7 @@
 1. [Controllers](#controllers)
 1. [Templates](#templates)
 1. [Models](#models)
+1. [Testing](#testing)
 
 ## General
 
@@ -317,6 +318,8 @@ export default Model.extend({
 
 ## Testing
 
+* Use `test-` class prefix as a special testing selector. For example, `test-user`.
+
 * Don't break the describe blocks into multiple lines
 
 ```javascript
@@ -349,7 +352,7 @@ describeComponent('dummy-select', 'Integration: dummy-select', { integration: tr
 });
 ```
 
-* Name your tests using the following pattern - `Test type`: `module-name`, while keeping the component names as the are and capitalizing the model names.
+* Name your tests using the following pattern - `Test type`: `module-name`, while keeping the component names as they are and capitalizing the model names.
 
 ```javascript
 // bad
