@@ -1,12 +1,24 @@
 Rails:
   Enabled: true
 
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.4
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Lint/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_line
+
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
 Style/IndentationWidth:
   Width: 2
-
-Style/AlignHash:
-  EnforcedHashRocketStyle: key
-  EnforcedColonStyle: key
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
@@ -20,17 +32,25 @@ Style/PercentLiteralDelimiters:
     '%W': '{}'
     '%x': '{}'
 
-Style/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
 
 Style/Documentation:
   Enabled: false
 
-Style/BracesAroundHashParameters:
-  Enabled: false
+Style/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
 
-Style/BlockDelimiters:
-  Enabled: false
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - app/admin/*.rb
+  ExcludeMethods:
+    - context
+    - describe
+    - it
+    - shared_examples
 
 Metrics/LineLength:
   Max: 100
