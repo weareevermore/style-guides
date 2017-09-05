@@ -148,23 +148,36 @@ data.shuffle().first()
 data.shuffle.first
 ```
 
-* When passing a big hash to a method, always use `{}` and have the hash keys on new
-  lines with one indentation
+* When passing a big hash to a method, have the hash keys on new
+  lines with one indentation level.
 
 ```ruby
 # bad
+User.new(first_name: 'John',
+         last_name: 'Snow',
+         age: 23)
+
+# good
 User.new(
   first_name: 'John',
   last_name: 'Snow',
   age: 23
 )
+```
+
+* Use a single level of indentation for multiline parameters.
+
+```ruby
+# bad
+have_fun(one,
+         two)
 
 # good
-User.new({
-  first_name: 'John',
-  last_name: 'Snow',
-  age: 23
-})
+have_fun(
+  one,
+  two,
+  ...
+)
 ```
 
 ## Conditional Expressions
