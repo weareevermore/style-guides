@@ -89,6 +89,11 @@ end
 > When writing your comments, write for your audience: the next contributor who
 > will need to understand your code. Be generous — the next one may be you!
 
+> Comments should not describe what the code does. That should be obvious from 
+> the code itself. They should describe WHY the code does what it does. Hidden 
+> assumptions, dependencies or that sort of thing. Things that are not obvious from 
+> looking at one particular block of code.
+
  - [Google C++ Style Guide](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Comments)
 
 ### Commented-out code
@@ -513,8 +518,10 @@ else
 end
 ```
 
-* Do not rescuing the `Exception` class, be explicit in what you are
-  rescuing from
+* Do not rescuing the `Exception` class. `Exception` is the root of Ruby's exception 
+ hierarchy, so when you rescue `Exception` you rescue from everything, including 
+ subclasses such as SyntaxError, LoadError, and Interrupt. Be explicit in what you are
+ rescuing from
 
 ```ruby
 # bad
@@ -601,6 +608,23 @@ html << '<h1>Page title</h1>'
 paragraphs.each do |paragraph|
   html << "<p>#{paragraph}</p>"
 end
+```
+
+* When you need to split long string on multiple lines use \ instead of + and <<.
+ \ simply tells Ruby parser that the string continues on the next line
+
+```ruby
+# bad
+some_str = 'ala' +
+           'bala'
+
+some_str = 'ala' <<
+           'bala'
+
+# good
+some_str = 
+  'ala' \
+  'bala' 
 ```
 
 * Use heredoc style strings for multiline strings that need interpolation
