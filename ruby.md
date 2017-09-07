@@ -609,8 +609,9 @@ some_str = 'ala' <<
            'bala'
 
 # good
-some_str = 'ala' \
-           'bala' 
+some_str = 
+  'ala' \
+  'bala' 
 ```
 
 * Use heredoc style strings for multiline strings that need interpolation
