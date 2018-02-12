@@ -89,9 +89,9 @@ end
 > When writing your comments, write for your audience: the next contributor who
 > will need to understand your code. Be generous — the next one may be you!
 
-> Comments should not describe what the code does. That should be obvious from 
-> the code itself. They should describe WHY the code does what it does. Hidden 
-> assumptions, dependencies or that sort of thing. Things that are not obvious from 
+> Comments should not describe what the code does. That should be obvious from
+> the code itself. They should describe WHY the code does what it does. Hidden
+> assumptions, dependencies or that sort of thing. Things that are not obvious from
 > looking at one particular block of code.
 
  - [Google C++ Style Guide](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Comments)
@@ -518,8 +518,8 @@ else
 end
 ```
 
-* Do not rescuing the `Exception` class. `Exception` is the root of Ruby's exception 
- hierarchy, so when you rescue `Exception` you rescue from everything, including 
+* Do not rescuing the `Exception` class. `Exception` is the root of Ruby's exception
+ hierarchy, so when you rescue `Exception` you rescue from everything, including
  subclasses such as SyntaxError, LoadError, and Interrupt. Be explicit in what you are
  rescuing from
 
@@ -622,9 +622,9 @@ some_str = 'ala' <<
            'bala'
 
 # good
-some_str = 
+some_str =
   'ala' \
-  'bala' 
+  'bala'
 ```
 
 * Use heredoc style strings for multiline strings that need interpolation
@@ -639,22 +639,22 @@ HTML
 
 ## Percent Literals
 
-* Use curly brackets for `%` literals
+* Use square brackets for `%` array literals and curly brackets for the rest
 
 ```ruby
 # bad
-%w[active inactive]
+%w{active inactive}
 %(A long string)
 
 # good
-%w{active inactive}
+%w[active inactive]
 %{A long string}
 ```
 
 * Use `%w` freely.
 
 ```ruby
-STATUES = %w{active inactive invited}
+STATUES = %w[active inactive invited]
 ```
 
 * Use %() for single-line strings which require both interpolation and embedded
