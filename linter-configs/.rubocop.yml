@@ -3,6 +3,8 @@ Rails:
 
 AllCops:
   DisplayCopNames: true
+  Exclude:
+    - db/schema.rb
   TargetRubyVersion: 2.4
 
 Layout/AlignParameters:
@@ -17,19 +19,22 @@ Lint/EndAlignment:
 Layout/IndentHash:
   EnforcedStyle: consistent
 
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Width: 2
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
 
 Style/PercentLiteralDelimiters:
   PreferredDelimiters:
     '%':  '{}'
-    '%i': '{}'
+    '%i': '[]'
     '%q': '{}'
     '%Q': '{}'
     '%r': '{}'
     '%s': '{}'
-    '%w': '{}'
-    '%W': '{}'
+    '%w': '[]'
+    '%W': '[]'
     '%x': '{}'
 
 Style/BlockDelimiters:
@@ -38,19 +43,22 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
-Style/MultilineMethodCallBraceLayout:
-  EnforcedStyle: new_line
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/SymbolArray:
+  Enabled: false
 
 Metrics/BlockLength:
   CountComments: false
   Max: 25
   Exclude:
     - app/admin/*.rb
-  ExcludeMethods:
+  ExcludedMethods:
     - context
     - describe
     - it
     - shared_examples
 
 Metrics/LineLength:
-  Max: 100
+  Max: 120

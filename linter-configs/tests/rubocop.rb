@@ -47,11 +47,12 @@ class Rubocop
       age: 23
     }
 
-    one = if fun?
-      have_fun
-    else
-      try_again
-    end
+    one =
+      if fun?
+        have_fun
+      else
+        try_again
+      end
   end
 
   # Style/IndentationWidth
@@ -70,7 +71,7 @@ class Rubocop
   # Style/PercentLiteralDelimiters
   def percent_literal_delimiters
     %w(one two)
-    %w{one two}
+    %w[one two]
   end
 
   # Style/BlockDelimiters
@@ -118,6 +119,9 @@ class Rubocop
     # bad
     have_fun(
       one)
+
+    have_fun(one,
+             two)
 
     # good
     have_func(
