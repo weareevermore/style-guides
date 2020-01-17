@@ -1,4 +1,4 @@
-# HTML Style Guide
+# Ember Style Guide
 
 ## Table of Contents
 
